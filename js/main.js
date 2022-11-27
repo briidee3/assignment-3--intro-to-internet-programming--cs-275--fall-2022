@@ -35,6 +35,12 @@ let albums = (json) => {
         // gather each bit of data from current element of data.json
         // and append to currSlide with proper class names for CSS
 
+        // album
+        let album = currSlide.appendChild(document.createElement(`h2`));
+        album.setAttribute(`class`, `album`);
+        album.innerHTML = json[i].album;
+
+
 
 
 
