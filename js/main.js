@@ -40,6 +40,12 @@ let albums = (json) => {
         album.setAttribute(`class`, `album`);
         album.innerHTML = json[i].album;
 
+        // artist
+        let artist = currSlide.appendChild(document.createElement(`a`));
+        artist.setAttribute(`class`, `artist`);
+        artist.setAttribute(`href`, json[i].url);
+        artist.innerHTML = json[i].artist;
+
 
 
 
