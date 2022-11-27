@@ -8,13 +8,17 @@
   --slides-width: 640px;
 }
 
-h1 {
+body {
   text-align: center;
+}
+
+h1 {
 }
 
 .carousel {
   width: var(--slides-width, 640px);
   position: fixed;
+  left: calc(50% - (var(--slides-width, 640px) / 2));
   z-index: 1;
 }
 
@@ -59,7 +63,7 @@ h1 {
 
 /* review contents */
 .slides p {
-
+  text-align: left;
 }
 
 /* review source/links */
