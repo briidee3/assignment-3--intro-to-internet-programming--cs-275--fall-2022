@@ -33,18 +33,15 @@ let albums = (json) => {
 
         // album
         let album = currSlide.appendChild(document.createElement(`h2`));
-        album.setAttribute(`class`, `album`);
         album.innerHTML = json[i].album;
 
         // artist
         let artist = currSlide.appendChild(document.createElement(`a`));
-        artist.setAttribute(`class`, `artist`);
         artist.setAttribute(`href`, json[i].url);
         artist.innerHTML = json[i].artist;
 
         // cover image (including credit + url)
         let cover_image = currSlide.appendChild(document.createElement(`img`));
-        cover_image.setAttribute(`class`, `cover_image`);
         cover_image.setAttribute(`src`, json[i].cover_image.path);
         cover_image.setAttribute(`alt`, json[i].cover_image.alt_content);
         let coverCredit = cover_image.appendChild(document.createElement(`h4`));
@@ -54,9 +51,8 @@ let albums = (json) => {
 
         // review
         let review = currSlide.appendChild(document.createElement(`p`));
-        review.setAttribute(`class`, `review`);
         review.innerHTML = json[i].review.content;
-        let reviewSrc = review.appendChild(document.createElement(`h4`));
+        let reviewSrc = review.appendChild(document.createElement(`h3`));
         let reviewSrcUrl = `<a href=${json[i].review.url}>`
             + json[i].review.source + `</a>`;
         reviewSrc.innerHTML = `—${reviewSrcUrl}`;
