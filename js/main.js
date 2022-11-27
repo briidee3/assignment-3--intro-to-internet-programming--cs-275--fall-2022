@@ -12,18 +12,38 @@ window.onload = () => {
     body.appendChild(jsonpScript);
 
 
+    // set up click functionality for arrows
+    let arrows = document.getElementsByClassName(`carousel-navigation`)[0].children;
+    let leftArrow = arrows[0];
+    let rightArrow = arrows[1];
+    // offset for continuity and simplicity/efficiency (no need to rewrite functions)
+    let offset = 0; // default offset is 0
+
+    // left arrow
+    leftArrow.addEventListener(`click`, () => {
+        offset = shiftSlides(`left`, offset);
+    });
+    // right arrow
+    rightArrow.addEventListener(`click`, () => {
+        offset = shiftSlides(`right`, offset);
+        console.log(offset);
+    });
 
 };
 
 
 // function to move slides left or right, for use with arrows
 let shiftSlides = (dir, offset) => {
-    if (dir === `left`)
+    if (dir === `left`) {
         offset--;
-    else if (dir === `right`)
+        positionSlides(offset);
+    }
+    else if (dir === `right`) {
         offset++;
+        positionSlides(offset);
+    }
 
-    offset; // here so that it does nothing if dir isn't `left` or `right`
+    return offset; // return offset for further use
 };
 
 
@@ -32,8 +52,8 @@ let positionSlides = (offset) => {
     let slides = document.getElementsByClassName(`slides`);
     let slideWidth = 640 + 40;
     console.log(slides.length);
-    for (let i = 0; i < slides.length + offset; i++) {
-        console.log(slides[i].style.left = `${i * slideWidth}px`);
+    for (let i = 0; i < slides.length; i++) {
+        console.log(slides[i].style.left = `${(i + offset) * slideWidth}px`);
     }
 };
 
