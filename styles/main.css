@@ -10,34 +10,48 @@
 
 body {
   text-align: center;
+  font-size: 16px;
+  line-height: 1.4;
 }
 
 h1 {
+  font-size: 32px;
+  line-height: 38px;
 }
 
 .carousel {
   width: var(--slides-width, 640px);
   position: fixed;
-  left: calc(50% - (var(--slides-width, 640px) / 2));
+  left: calc(50% - ((var(--slides-width, 640px) + 40px) / 2));
   z-index: 1;
 }
 
-.carousel-navigation {
-  overflow: clip;
-  z-index: 2;
+.carousel-navigation a {
+  position: absolute;
+  top: calc(427px / 2);
+  z-index: 3;
+}
+
+.carousel-navigation a:first-of-type {
+  left: 30px;
+}
+
+.carousel-navigation a:last-of-type {
+  left: calc(100% - 20px);
 }
 
 .carousel-slides {
   position: relative;
   display: flex;
-  z-index: 3;
+  z-index: 2;
 }
 
 .slides {
-  width: var(--slides-width, 640px);
   display: inherit;
   flex-direction: column;
   position: absolute;
+  padding-left: 20px;
+  padding-right: 20px;
   transition: 250ms;
 }
 
