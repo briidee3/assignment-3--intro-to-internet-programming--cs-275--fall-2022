@@ -13,17 +13,26 @@ window.onload = () => {
 
 
 
+};
 
 
+// function to move slides left or right, for use with arrows
+let shiftSlides = (dir, offset) => {
+    if (dir === `left`)
+        offset--;
+    else if (dir === `right`)
+        offset++;
+
+    offset; // here so that it does nothing if dir isn't `left` or `right`
 };
 
 
 // place each slide in a horizontal line
-let positionSlides = () => {
+let positionSlides = (offset) => {
     let slides = document.getElementsByClassName(`slides`);
     let slideWidth = 640 + 40;
     console.log(slides.length);
-    for (let i = 0; i < slides.length; i++) {
+    for (let i = 0; i < slides.length + offset; i++) {
         console.log(slides[i].style.left = `${i * slideWidth}px`);
     }
 };
@@ -79,6 +88,6 @@ let albums = (json) => {
 
     }
 
-    positionSlides();
+    positionSlides(0);
 
 };
