@@ -1,4 +1,4 @@
-albums[
+albums([
   {
     "artist": "Dawn of Midi",
     "album": "Dysnomia",
@@ -71,4 +71,4 @@ albums[
       "url": "https://jazztimes.com/archives/gotan-project-lunatico/"
     }
   }
-]
+]);
