@@ -4,4 +4,7 @@
 
 window.onload = () => {
 
+    // instantiate each individual slide using data.json
+
+
 };
