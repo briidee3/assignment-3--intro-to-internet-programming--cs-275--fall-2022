@@ -36,3 +36,33 @@ h1 {
   position: absolute;
   transition: 250ms;
 }
+
+/* album names */
+.slides h2 {
+
+}
+
+/* artist names/links */
+.slides a {
+
+}
+
+/* cover images */
+.slides img {
+
+}
+
+/* cover image credits */
+.slides h4 {
+
+}
+
+/* review contents */
+.slides p {
+
+}
+
+/* review source/links */
+.slides h3 {
+
+}
