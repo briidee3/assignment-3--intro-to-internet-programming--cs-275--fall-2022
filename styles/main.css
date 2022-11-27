@@ -1,2 +1,38 @@
+
 /* bring in fonts in the order they are used */
 /* ALL CSS goes here--NONE in main.js or index.html */
+
+
+/* using :root for initialization of global CSS variables */
+:root {
+  --slides-width: 640px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.carousel {
+  width: var(--slides-width, 640px);
+  position: fixed;
+  z-index: 1;
+}
+
+.carousel-navigation {
+  overflow: clip;
+  z-index: 2;
+}
+
+.carousel-slides {
+  position: relative;
+  display: flex;
+  z-index: 3;
+}
+
+.slides {
+  width: var(--slides-width, 640px);
+  display: inherit;
+  flex-direction: column;
+  position: absolute;
+  transition: 250ms;
+}

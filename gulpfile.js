@@ -24,8 +24,8 @@ let validateHTML = () => {
 
 let validateCSS = () => {
     return src([
-        `css/*.css`,
-        `css/**/*.css`])
+        `styles/*.css`,
+        `styles/**/*.css`])
         .pipe(cssValidator());
 };
 
@@ -44,7 +44,7 @@ let compressHTML = () => {
 };
 
 let compressCSS = () => {
-    return src([`css/*.css`,`css/**/*.css`])
+    return src([`styles/*.css`,`styles/**/*.css`])
         .pipe(cssCompressor({collapseWhitespace: true}))
         .pipe(dest(`prod/css`));
 };
@@ -76,7 +76,7 @@ let serve = () => {
     });
 
     watch(`*.html`, validateHTML).on(`change`, reload);
-    watch(`css/*.css`, validateCSS).on(`change`, reload);
+    watch(`styles/*.css`, validateCSS).on(`change`, reload);
     watch(`js/*.js`, series(validateJS, transpileJSForDev)).on(`change`, reload);
 };
 
