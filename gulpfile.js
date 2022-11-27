@@ -26,7 +26,12 @@ let validateCSS = () => {
     return src([
         `styles/*.css`,
         `styles/**/*.css`])
-        .pipe(cssValidator());
+        .pipe(cssValidator({
+            failAfterError: false,
+            reporters: [
+                {formatter: `string`, console: true}
+            ]
+        }));
 };
 
 let validateJS = () => {
