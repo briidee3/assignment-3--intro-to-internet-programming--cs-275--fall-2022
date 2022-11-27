@@ -17,8 +17,6 @@ window.onload = () => {
 // for the carousel for each element in the jsonp file
 let albums = (json) => {
 
-    console.log(json.length);
-
     // initialize references to DOM elements for ease of use
     //let carousel = document.getElementsByClassName(`carousel`)[0];
     //let carouselNav = document.getElementsByClassName(`carousel-navigation`)[0];
