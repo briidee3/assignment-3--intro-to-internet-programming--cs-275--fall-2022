@@ -56,7 +56,14 @@ let albums = (json) => {
             + json[i].cover_image.credit + `</a>`;
         coverCredit.innerHTML = `Credit: ${coverCreditUrl}`;
 
-       
+        // review
+        let review = currSlide.appendChild(document.createElement(`p`));
+        review.setAttribute(`class`, `review`);
+        review.innerHTML = json[i].review.content;
+        let reviewSrc = review.appendChild(document.createElement(`h4`));
+        let reviewSrcUrl = `<a href=${json[i].review.url}>`
+            + json[i].review.source + `</a>`;
+        reviewSrc.innerHTML = `—${reviewSrcUrl}`;
 
 
 
