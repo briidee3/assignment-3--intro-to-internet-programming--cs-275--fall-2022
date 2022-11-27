@@ -62,7 +62,6 @@ let albums = (json) => {
         reviewSrc.innerHTML = `—${reviewSrcUrl}`;
 
 
-
         // append currSlide to carouselSlides
         carouselSlides.appendChild(currSlide);
 
