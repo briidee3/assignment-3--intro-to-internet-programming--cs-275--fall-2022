@@ -11,7 +11,23 @@ window.onload = () => {
     jsonpScript.setAttribute(`id`, `jsonpSrc`);
     body.appendChild(jsonpScript);
 
+
+
+
+
 };
+
+
+// place each slide in a horizontal line
+let positionSlides = () => {
+    let slides = document.getElementsByClassName(`slides`);
+    let slideWidth = 640 + 40;
+    console.log(slides.length);
+    for (let i = 0; i < slides.length; i++) {
+        console.log(slides[i].style.left = `${i * slideWidth}px`);
+    }
+};
+
 
 // utilize the jsonp (data.json) file and organize the slides
 // for the carousel for each element in the jsonp file
@@ -62,5 +78,7 @@ let albums = (json) => {
         carouselSlides.appendChild(currSlide);
 
     }
+
+    positionSlides();
 
 };
