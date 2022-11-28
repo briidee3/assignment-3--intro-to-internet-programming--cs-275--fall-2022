@@ -54,12 +54,6 @@ let compressCSS = () => {
         .pipe(dest(`prod/styles`));
 };
 
-let transpileJSForDev = () => {
-    return src(`js/*.js`)
-        .pipe(babel())
-        .pipe(dest(`temp/js`));
-};
-
 let transpileJSForProd = () => {
     return src(`js/*.js`)
         .pipe(babel())
@@ -83,17 +77,12 @@ let serve = () => {
         notify: true,
         reloadDelay: 50,
         browser: browserChoice,
-        server: {
-            baseDir: [
-                `temp`,
-                `.`
-            ]
-        }
+        server: { baseDir: `.`}
     });
 
     watch(`*.html`, validateHTML).on(`change`, reload);
     watch(`styles/*.css`, validateCSS).on(`change`, reload);
-    watch(`js/*.js`, series(validateJS, transpileJSForDev)).on(`change`, reload);
+    watch(`js/*.js`, series(validateJS)).on(`change`, reload);
 };
 
 exports.chrome = series(chrome, serve);
@@ -102,7 +91,6 @@ exports.validateCSS = validateCSS;
 exports.validateJS = validateJS;
 exports.compressHTML = compressHTML;
 exports.compressCSS = compressCSS;
-exports.transpileJSForDev = transpileJSForDev;
 exports.transpileJSForProd = transpileJSForProd;
 exports.copyJSONToProd = copyJSONToProd;
 exports.copyImagesToProd = copyImagesToProd;
@@ -110,7 +98,6 @@ exports.serve = series(
     validateHTML,
     validateCSS,
     validateJS,
-    transpileJSForDev,
     serve
 );
 exports.build = series(
