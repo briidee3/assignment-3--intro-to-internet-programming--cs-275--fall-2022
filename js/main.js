@@ -39,15 +39,31 @@ window.onload = () => {
     // initialization call
     hideArrows();
 
+
     // left arrow functionality
+    // click
     leftArrow.addEventListener(`click`, () => {
         if (!(offset === 1 - slides.length))
             offset = shiftSlides(`left`, offset);
         hideArrows();
     });
+    // arrow key
+    document.addEventListener(`keydown`, (key) => {
+        if (key.key === `ArrowLeft` && !(offset === 1 - slides.length))
+            offset = shiftSlides(`left`, offset);
+        hideArrows();
+    });
+
     // right arrow functionality
+    // click
     rightArrow.addEventListener(`click`, () => {
         if (!(offset === 0))
+            offset = shiftSlides(`right`, offset);
+        hideArrows();
+    });
+    // arrow key
+    document.addEventListener(`keydown`, (key) => {
+        if (key.key === `ArrowRight` && !(offset === 0))
             offset = shiftSlides(`right`, offset);
         hideArrows();
     });
