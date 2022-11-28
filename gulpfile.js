@@ -63,13 +63,13 @@ let transpileJSForDev = () => {
 let transpileJSForProd = () => {
     return src(`js/*.js`)
         .pipe(babel())
-        .pipe(jsCompressor())
+        .pipe(jsCompressor({ mangle: false }))
         .pipe(dest(`prod/js`));
 };
 
 let copyJSONToProd = () => {
     return src(`json/data.json`)
-        .pipe(dest(`prod/json/data.json`));
+        .pipe(dest(`prod/json`));
 };
 
 let copyImagesToProd = () => {
