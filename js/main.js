@@ -16,17 +16,20 @@ window.onload = () => {
     let arrows = document.getElementsByClassName(`carousel-navigation`)[0].children;
     let leftArrow = arrows[0];
     let rightArrow = arrows[1];
-    // offset for continuity and simplicity/efficiency (no need to rewrite functions)
+    // offset is for continuity and simplicity/efficiency (no need to rewrite functions)
     let offset = 0; // default offset is 0
+    // slides is needed here for the left arrow conditional
+    let slides = document.getElementsByClassName(`slides`);
 
     // left arrow
     leftArrow.addEventListener(`click`, () => {
-        offset = shiftSlides(`left`, offset);
+        if (!(offset === 1 - slides.length))
+            offset = shiftSlides(`left`, offset);
     });
     // right arrow
     rightArrow.addEventListener(`click`, () => {
-        offset = shiftSlides(`right`, offset);
-        console.log(offset);
+        if (!(offset === 0))
+            offset = shiftSlides(`right`, offset);
     });
 
 };
