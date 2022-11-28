@@ -92,3 +92,8 @@ h1 {
 .slides h3 {
   text-align: left;
 }
+
+/* id for hiding elements (arrows) as needed */
+#hidden {
+  display: none;
+}

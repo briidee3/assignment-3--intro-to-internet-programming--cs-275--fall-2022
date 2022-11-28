@@ -12,6 +12,8 @@ window.onload = () => {
     body.appendChild(jsonpScript);
 
 
+
+
     // set up click functionality for arrows
     let arrows = document.getElementsByClassName(`carousel-navigation`)[0].children;
     let leftArrow = arrows[0];
@@ -21,18 +23,39 @@ window.onload = () => {
     // slides is needed here for the left arrow conditional
     let slides = document.getElementsByClassName(`slides`);
 
-    // left arrow
+    // function to hide arrows when necessary
+    let hideArrows = () => {
+        // left arrow
+        if (offset === 1 - slides.length)
+            leftArrow.id = `hidden`;
+        else
+            leftArrow.id = ``;
+        // right arrow
+        if (offset === 0)
+            rightArrow.id = `hidden`;
+        else
+            rightArrow.id = ``;
+    };
+    // initialization call
+    hideArrows();
+
+    // left arrow functionality
     leftArrow.addEventListener(`click`, () => {
         if (!(offset === 1 - slides.length))
             offset = shiftSlides(`left`, offset);
+        hideArrows();
     });
-    // right arrow
+    // right arrow functionality
     rightArrow.addEventListener(`click`, () => {
         if (!(offset === 0))
             offset = shiftSlides(`right`, offset);
+        hideArrows();
     });
 
 };
+
+
+
 
 
 // function to move slides left or right, for use with arrows
