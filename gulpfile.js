@@ -51,7 +51,7 @@ let compressHTML = () => {
 let compressCSS = () => {
     return src([`styles/*.css`,`styles/**/*.css`])
         .pipe(cssCompressor({collapseWhitespace: true}))
-        .pipe(dest(`prod/css`));
+        .pipe(dest(`prod/styles`));
 };
 
 let transpileJSForDev = () => {
@@ -64,7 +64,7 @@ let transpileJSForProd = () => {
     return src(`js/*.js`)
         .pipe(babel())
         .pipe(jsCompressor())
-        .pipe(dest(`prod/scripts`));
+        .pipe(dest(`prod/js`));
 };
 
 let serve = () => {
@@ -99,4 +99,9 @@ exports.serve = series(
     validateJS,
     transpileJSForDev,
     serve
+);
+exports.build = series(
+    compressHTML,
+    compressCSS,
+    transpileJSForProd
 );
