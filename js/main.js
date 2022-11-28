@@ -1,6 +1,6 @@
 // Assignment 3: Intro to Internet Programming (CS275)
 // Bri D'Urso
-// November 2022
+// 11-27-2022
 
 window.onload = () => {
 
@@ -16,10 +16,13 @@ window.onload = () => {
     let arrows = document.getElementsByClassName(`carousel-navigation`)[0].children;
     let leftArrow = arrows[0];
     let rightArrow = arrows[1];
-    // offset is for continuity and simplicity/efficiency (no need to rewrite functions)
+    // "offset" is for continuity and simplicity/efficiency (no need to rewrite functions)
     let offset = 0; // default offset is 0
-    // slides is needed here for the left arrow conditional
+    // "slides" is needed here for the left arrow conditional
     let slides = document.getElementsByClassName(`slides`);
+
+
+    /* taking care of the functionality of the arrows/slides */
 
     // function to hide arrows when necessary
     let hideArrows = () => {
@@ -36,7 +39,6 @@ window.onload = () => {
     };
     // initialization call
     hideArrows();
-
 
     // left arrow functionality
     // click

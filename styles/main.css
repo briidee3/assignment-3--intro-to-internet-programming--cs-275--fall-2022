@@ -1,8 +1,4 @@
-
-/* bring in fonts in the order they are used */
-/* ALL CSS goes here--NONE in main.js or index.html */
-
-/* using :root for initialization of global CSS variables */
+/* using :root for initialization of global CSS variable(s) */
 :root {
   --slides-width: 640px;
 }
