@@ -3,6 +3,7 @@ const { src, dest, series, watch } = require(`gulp`),
     htmlCompressor = require(`gulp-htmlmin`),
     jsCompressor = require(`gulp-uglify`),
     cssCompressor = require(`gulp-clean-css`),
+    imageCompressor = require(`gulp-image`),
     htmlValidator = require(`gulp-html`),
     jsValidator = require(`gulp-eslint`),
     cssValidator = require(`gulp-stylelint`),
@@ -67,6 +68,29 @@ let transpileJSForProd = () => {
         .pipe(dest(`prod/js`));
 };
 
+let copyJSONToProd = () => {
+    return src(`json/data.json`)
+        .pipe(dest(`prod/json/data.json`));
+};
+
+// borrowed this function from code-warrior gulp template github
+let compressImages = () => {
+    return src(`img/*`)
+        .pipe(imageCompressor({
+            optipng: [`-i 1`, `-strip all`, `-fix`, `-o7`, `-force`],
+            pngquant: [`--speed=1`, `--force`, 256],
+            zopflipng: [`-y`, `--lossy_8bit`, `--lossy_transparent`],
+            jpegRecompress: [`--strip`, `--quality`, `medium`, `--min`, 40,
+                `--max`, 80],
+            mozjpeg: [`-optimize`, `-progressive`],
+            gifsicle: [`--optimize`],
+            svgo: [`--enable`, `cleanupIDs`, `--disable`, `convertColors`],
+            quiet: false
+        }))
+        .pipe(dest(`prod/img/*`));
+
+};
+
 let serve = () => {
     browserSync({
         notify: true,
@@ -93,6 +117,8 @@ exports.compressHTML = compressHTML;
 exports.compressCSS = compressCSS;
 exports.transpileJSForDev = transpileJSForDev;
 exports.transpileJSForProd = transpileJSForProd;
+exports.copyJSONToProd = copyJSONToProd;
+exports.compressImages = compressImages;
 exports.serve = series(
     validateHTML,
     validateCSS,
@@ -103,5 +129,7 @@ exports.serve = series(
 exports.build = series(
     compressHTML,
     compressCSS,
-    transpileJSForProd
+    compressImages,
+    transpileJSForProd,
+    copyJSONToProd
 );
