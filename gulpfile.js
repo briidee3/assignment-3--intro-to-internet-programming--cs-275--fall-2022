@@ -90,7 +90,7 @@ let serve = () => {
 
     watch(`*.html`, validateHTML).on(`change`, reload);
     watch(`styles/*.css`, validateCSS).on(`change`, reload);
-    watch(`js/*.js`, series(validateJS)).on(`change`, reload);
+    watch(`js/*.js`, series(validateJS, transpileJSForDev)).on(`change`, reload);
 };
 
 exports.chrome = series(chrome, serve);
