@@ -54,10 +54,16 @@ let compressCSS = () => {
         .pipe(dest(`prod/styles`));
 };
 
+let transpileJSForDev = () => {
+    return src(`js/*.js`)
+        .pipe(babel())
+        .pipe(dest(`temp/js`));
+};
+
 let transpileJSForProd = () => {
     return src(`js/*.js`)
         .pipe(babel())
-        .pipe(jsCompressor({ mangle: false }))
+        .pipe(jsCompressor())
         .pipe(dest(`prod/js`));
 };
 
@@ -77,7 +83,9 @@ let serve = () => {
         notify: true,
         reloadDelay: 50,
         browser: browserChoice,
-        server: { baseDir: `.`}
+        server: {
+            baseDir: [`.`, `temp`]
+        }
     });
 
     watch(`*.html`, validateHTML).on(`change`, reload);
@@ -91,6 +99,7 @@ exports.validateCSS = validateCSS;
 exports.validateJS = validateJS;
 exports.compressHTML = compressHTML;
 exports.compressCSS = compressCSS;
+exports.transpileJSForDev = transpileJSForDev;
 exports.transpileJSForProd = transpileJSForProd;
 exports.copyJSONToProd = copyJSONToProd;
 exports.copyImagesToProd = copyImagesToProd;
@@ -98,6 +107,7 @@ exports.serve = series(
     validateHTML,
     validateCSS,
     validateJS,
+    transpileJSForDev,
     serve
 );
 exports.build = series(
