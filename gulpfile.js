@@ -84,7 +84,7 @@ let serve = () => {
         reloadDelay: 50,
         browser: browserChoice,
         server: {
-            baseDir: [`.`, `temp`]
+            baseDir: [`.`,`temp`]
         }
     });
 
@@ -113,7 +113,7 @@ exports.serve = series(
 exports.build = series(
     compressHTML,
     compressCSS,
-    copyImagesToProd,
     transpileJSForProd,
+    copyImagesToProd,
     copyJSONToProd
 );
