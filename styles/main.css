@@ -10,12 +10,14 @@
 
 body {
   text-align: center;
+  font-family: 'Open Sans', sans-serif;
   font-size: 16px;
-  line-height: 1.4;
+  line-height: calc(16px * 1.4);
 }
 
 h1 {
   font-size: 32px;
+  font-weight: bold;
   line-height: calc(32px + 38px);
 }
 
@@ -55,30 +57,38 @@ h1 {
 
 /* album names */
 .slides h2 {
-
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
 }
 
 /* artist names/links */
-.slides a {
+.slides a:link {
+  text-decoration: none;
+}
 
+.slides a:visited {
+  text-decoration-color: purple;
 }
 
 /* cover images */
 .slides img {
-
+  padding-top: 20px;
 }
 
 /* cover image credits */
 .slides h4 {
-
+  font-size: 14px;
 }
 
 /* review contents */
 .slides p {
   text-align: left;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 /* review source/links */
 .slides h3 {
-
+  text-align: left;
 }
