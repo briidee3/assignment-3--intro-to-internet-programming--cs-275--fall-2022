@@ -2,7 +2,6 @@
 /* bring in fonts in the order they are used */
 /* ALL CSS goes here--NONE in main.js or index.html */
 
-
 /* using :root for initialization of global CSS variables */
 :root {
   --slides-width: 640px;
@@ -17,7 +16,7 @@ body {
 
 h1 {
   font-size: 32px;
-  font-weight: bold;
+  font-weight: 600;
   line-height: calc(32px + 38px);
 }
 
@@ -58,7 +57,7 @@ h1 {
 /* album names */
 .slides h2 {
   text-transform: uppercase;
-  font-weight: bold;
+  font-weight: 600;
   letter-spacing: 2px;
 }
 
