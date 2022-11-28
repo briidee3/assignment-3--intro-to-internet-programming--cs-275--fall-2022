@@ -101,7 +101,8 @@ let albums = (json) => {
         // review
         let review = currSlide.appendChild(document.createElement(`p`));
         review.innerHTML = json[i].review.content;
-        let reviewSrc = review.appendChild(document.createElement(`h3`));
+        // review source
+        let reviewSrc = currSlide.appendChild(document.createElement(`h3`));
         let reviewSrcUrl = `<a href=${json[i].review.url}>`
             + json[i].review.source + `</a>`;
         reviewSrc.innerHTML = `—${reviewSrcUrl}`;
