@@ -88,11 +88,12 @@ let albums = (json) => {
         artist.setAttribute(`href`, json[i].url);
         artist.innerHTML = json[i].artist;
 
-        // cover image (including credit + url)
+        // cover image
         let cover_image = currSlide.appendChild(document.createElement(`img`));
         cover_image.setAttribute(`src`, json[i].cover_image.path);
         cover_image.setAttribute(`alt`, json[i].cover_image.alt_content);
-        let coverCredit = cover_image.appendChild(document.createElement(`h4`));
+        // cover image credit
+        let coverCredit = currSlide.appendChild(document.createElement(`h4`));
         let coverCreditUrl = `<a href=${json[i].cover_image.url}>`
             + json[i].cover_image.credit + `</a>`;
         coverCredit.innerHTML = `Credit: ${coverCreditUrl}`;
