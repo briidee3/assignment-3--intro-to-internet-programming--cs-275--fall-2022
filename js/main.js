@@ -12,8 +12,6 @@ window.onload = () => {
     body.appendChild(jsonpScript);
 
 
-
-
     // set up click functionality for arrows
     let arrows = document.getElementsByClassName(`carousel-navigation`)[0].children;
     let leftArrow = arrows[0];
@@ -69,9 +67,6 @@ window.onload = () => {
     });
 
 };
-
-
-
 
 
 // function to move slides left or right, for use with arrows

@@ -74,7 +74,7 @@ let copyJSONToProd = () => {
 
 let copyImagesToProd = () => {
     return src(`img/*`)
-        .pipe(dest(`prod/img/*`));
+        .pipe(dest(`prod/img`));
 
 };
 
